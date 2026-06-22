@@ -25,7 +25,7 @@ export const adminLogin = asyncHandler(async (req, res) => {
     throw new AppError("Admin not configured on server", 500);
   }
 
-  const isMatch = password = env.admin.passwordHash
+  const isMatch = await bcrypt.compare(password, env.admin.passwordHash);
 
   if (!isMatch) {
     throw new AppError("Invalid credentials", 401);

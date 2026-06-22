@@ -2,11 +2,18 @@ import app from "./app.js";
 import { connectDB } from "./config/db.js";
 import { env } from "./config/env.js";
 import { startReminderCron } from "./cron/reminderCron.js";
+import bcrypt from "bcryptjs";
 
 const bootstrap = async () => {
   try {
     await connectDB();
     startReminderCron();
+    const password = "Admin@123";
+    
+    const hash = await bcrypt.hash(password, 10);
+    
+    console.log("Password:", password);
+    console.log("Hash:", hash);
     app.listen(env.port, () => {
       console.log(`Server running on port ${env.port}`);
     });
