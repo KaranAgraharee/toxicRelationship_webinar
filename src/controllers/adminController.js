@@ -25,12 +25,6 @@ export const adminLogin = asyncHandler(async (req, res) => {
     throw new AppError("Admin not configured on server", 500);
   }
 
-  console.log("ADMIN_EMAIL:", env.admin.email);
-console.log("HASH:", env.admin.passwordHash);
-
-const isMatch = await bcrypt.compare(password, env.admin.passwordHash);
-
-console.log("PASSWORD MATCH:", isMatch);
   const isMatch = await bcrypt.compare(password, env.admin.passwordHash);
 
   if (!isMatch) {
