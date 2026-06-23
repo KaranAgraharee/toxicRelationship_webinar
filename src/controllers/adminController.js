@@ -9,38 +9,15 @@ import { env } from "../config/env.js";
 // ─── Admin Login ─────────────────────────────────────────────────────────────
 
 export const adminLogin = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
 
-  if (!email || !password) {
-    throw new AppError("Email and password are required", 400);
-  }
+   console.log("Request Body:", req.body);
+  console.log("Env Email:", env.admin.email);
+  console.log("Env Hash:", env.admin.passwordHash);
 
-  const normalizedEmail = email.toLowerCase().trim();
-
-  if (normalizedEmail !== env.admin.email.toLowerCase()) {
-    throw new AppError("Invalid credentials", 401);
-  }
-
-  if (!env.admin.passwordHash) {
-    throw new AppError("Admin not configured on server", 500);
-  }
-
-  const isMatch = await bcrypt.compare(password, env.admin.passwordHash);
-
-  if (!isMatch) {
-    throw new AppError("Invalid credentials", 401);
-  }
-
-  const token = jwt.sign(
-    { email: normalizedEmail, role: "admin" },
-    env.jwtSecret,
-    { expiresIn: "8h" }
-  );
-
-  res.status(200).json({
-    success: true,
-    message: "Login successful",
-    data: { token, expiresIn: "8h" },
+  return res.json({
+    requestEmail: req.body.email,
+    envEmail: env.admin.email,
+    hashExists: !!env.admin.passwordHash,
   });
 });
 
