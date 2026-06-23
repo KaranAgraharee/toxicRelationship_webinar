@@ -9,29 +9,27 @@ import { env } from "../config/env.js";
 // ─── Admin Login ─────────────────────────────────────────────────────────────
 
 export const adminLogin = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
 
-console.log("Input Password:", password);
-console.log("Env Hash:", env.admin.passwordHash);
-
-const isMatch = await bcrypt.compare(
-  password,
-  env.admin.passwordHash
-);
-
-console.log("isMatch:", isMatch);
-
-const newHash = await bcrypt.hash(password, 10);
-console.log("New Hash:", newHash);
-  console.log("Request Body:", req.body);
-  console.log("Env Email:", env.admin.email);
+  console.log("Input Password:", password);
   console.log("Env Hash:", env.admin.passwordHash);
 
+  const isMatch = await bcrypt.compare(
+    password,
+    env.admin.passwordHash
+  );
+
+  console.log("isMatch:", isMatch);
+
+  const newHash = await bcrypt.hash(password, 10);
+
   return res.json({
-    requestEmail: req.body.email,
+    requestEmail: email,
     envEmail: env.admin.email,
     hashExists: !!env.admin.passwordHash,
-    envhash: env.admin.passwordHash,
-    nw: newHash,
+    isMatch,
+    envHash: env.admin.passwordHash,
+    newHash,
   });
 });
 
