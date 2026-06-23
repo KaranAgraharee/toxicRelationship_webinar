@@ -11,26 +11,31 @@ import { env } from "../config/env.js";
 export const adminLogin = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
-  console.log("Input Password:", password);
-  console.log("Env Hash:", env.admin.passwordHash);
-
-  const isMatch = await bcrypt.compare(
-    password,
-    env.admin.passwordHash
-  );
-
-  console.log("isMatch:", isMatch);
-
-  const newHash = await bcrypt.hash(password, 10);
-
-  return res.json({
-    requestEmail: email,
-    envEmail: env.admin.email,
-    hashExists: !!env.admin.passwordHash,
-    isMatch,
-    envHash: env.admin.passwordHash,
-    newHash,
+if (
+  email !== process.env.ADMIN_EMAIL ||
+  password !== process.env.ADMIN_PASSWORD
+) {
+  return res.status(401).json({
+    success: false,
+    message: "Invalid credentials",
   });
+}
+
+const token = jwt.sign(
+  {
+    email,
+    role: "admin",
+  },
+  process.env.JWT_SECRET,
+  {
+    expiresIn: "8h",
+  }
+);
+
+return res.json({
+  success: true,
+  token,
+});
 });
 
 // ─── Dashboard Stats ─────────────────────────────────────────────────────────
