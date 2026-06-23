@@ -10,15 +10,18 @@ import { env } from "../config/env.js";
 
 export const adminLogin = asyncHandler(async (req, res) => {
 
-   console.log("Request Body:", req.body);
-  console.log("Env Email:", env.admin.email);
-  console.log("Env Hash:", env.admin.passwordHash);
+console.log("Input Password:", password);
+console.log("Env Hash:", env.admin.passwordHash);
 
-  return res.json({
-    requestEmail: req.body.email,
-    envEmail: env.admin.email,
-    hashExists: !!env.admin.passwordHash,
-  });
+const isMatch = await bcrypt.compare(
+  password,
+  env.admin.passwordHash
+);
+
+console.log("isMatch:", isMatch);
+
+const newHash = await bcrypt.hash(password, 10);
+console.log("New Hash:", newHash);
 });
 
 // ─── Dashboard Stats ─────────────────────────────────────────────────────────
