@@ -12,9 +12,10 @@ dotenv.config();
 
 export const adminLogin = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
+const normalizedEmail = email.toLowerCase().trim();
 
 if (
-  email !== process.env.ADMIN_EMAIL ||
+  normalizedEmail !== process.env.ADMIN_EMAIL ||
   password !== process.env.ADMIN_PASSWORD
 ) {
   return res.status(401).json({
@@ -22,7 +23,7 @@ if (
     message: "Invalid credentials",
   });
 }
-
+  
 const token = jwt.sign(
     { email: normalizedEmail, role: "admin" },
     env.jwtSecret,
