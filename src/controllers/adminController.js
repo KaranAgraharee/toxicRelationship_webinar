@@ -24,20 +24,16 @@ if (
 }
 
 const token = jwt.sign(
-  {
-    email,
-    role: "admin",
-  },
-  process.env.JWT_SECRET,
-  {
-    expiresIn: "8h",
-  }
-);
+    { email: normalizedEmail, role: "admin" },
+    env.jwtSecret,
+    { expiresIn: "8h" }
+  );
 
-return res.json({
-  success: true,
-  token,
-});
+  res.status(200).json({
+    success: true,
+    message: "Login successful",
+    data: { token, expiresIn: "8h" },
+  });
 });
 
 // ─── Dashboard Stats ─────────────────────────────────────────────────────────
