@@ -25,8 +25,8 @@ export const env = {
   mongodbUri: process.env.MONGODB_URI,
   jwtSecret: process.env.JWT_SECRET || "changeme_insecure_default",
   admin: {
-    email: process.env.ADMIN_EMAIL || "admin@example.com",
-    passwordHash: process.env.ADMIN_PASSWORD_HASH || "",
+    email: process.env.ADMIN_EMAIL || "support@khushnay.com",
+    passwordHash: process.env.ADMIN_PASSWORD_HASH || "$2b$10$uHQreRGKZF.xk.wpmSmIz.z1AotRzj4ietDCupQezSRcaj99rnLX2",
   },
   razorpay: {
     keyId: process.env.RAZORPAY_KEY_ID,
