@@ -22,6 +22,17 @@ console.log("isMatch:", isMatch);
 
 const newHash = await bcrypt.hash(password, 10);
 console.log("New Hash:", newHash);
+  console.log("Request Body:", req.body);
+  console.log("Env Email:", env.admin.email);
+  console.log("Env Hash:", env.admin.passwordHash);
+
+  return res.json({
+    requestEmail: req.body.email,
+    envEmail: env.admin.email,
+    hashExists: !!env.admin.passwordHash,
+    envhash: env.admin.passwordHash,
+    nw: newHash,
+  });
 });
 
 // ─── Dashboard Stats ─────────────────────────────────────────────────────────
