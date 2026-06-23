@@ -5,7 +5,9 @@ import Webinar from "../models/Webinar.js";
 import { AppError } from "../utils/AppError.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { env } from "../config/env.js";
+import dotenv from "dotenv";
 
+dotenv.config();
 // ─── Admin Login ─────────────────────────────────────────────────────────────
 
 export const adminLogin = asyncHandler(async (req, res) => {
