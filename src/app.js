@@ -10,9 +10,11 @@ import { env } from "./config/env.js";
 const app = express();
 
 app.use(cors(
-  {origin: 'https://webinar.khushnay.com'}
+  {
+    origin: 'https://webinar.khushnay.com',
+    credentials: true,
+  }
 ));
-console.log("[CORS] Allowed origins:", env.clientAllowedOrigins);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
