@@ -5,103 +5,168 @@ export const registrationConfirmationTemplate = ({
   time,
   venue,
   meetingLink,
-  amount,
 }) => ({
-  subject: `Registration confirmed: ${webinarTitle}`,
+  subject: `🎉 Registration Confirmed – ${webinarTitle}`,
+
   html: `
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Webinar Invitation</title>
+<meta charset="UTF-8" />
+<title>${webinarTitle}</title>
 </head>
-<body style="margin:0;padding:0;background:#f5f5f5;font-family:Arial,sans-serif;">
-  <table width="100%" cellpadding="0" cellspacing="0">
-    <tr>
-      <td align="center" style="padding:30px 15px;">
-        <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:12px;overflow:hidden;">
 
-          <!-- Header -->
-          <tr>
-            <td align="center" style="background:#8B2C4A;padding:30px;color:#ffffff;">
-              <h1 style="margin:0;">You're Registered!</h1>
-              <p style="margin:10px 0 0;font-size:16px;">
-                Toxic Relationship Webinar
-              </p>
-            </td>
-          </tr>
+<body style="margin:0;padding:0;background:#f7f5f2;font-family:Arial,sans-serif;color:#333;">
 
-          <!-- Content -->
-          <tr>
-            <td style="padding:30px;color:#333333;line-height:1.6;">
+<table width="100%" cellpadding="0" cellspacing="0">
+<tr>
+<td align="center" style="padding:40px 15px;">
 
-              <p>Hello,</p>
+<table width="620" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border-radius:14px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.08);">
 
-              <p>
-                Thank you for registering for the
-                <strong>Toxic Relationship Webinar</strong>
-                hosted by
-                <strong>Khushboo Khushnay – Relationship Expert & Healer</strong>.
-              </p>
+<tr>
+<td align="center"
+style="background:#7B2E4D;padding:45px 30px;color:#fff;">
 
-              <table width="100%" style="background:#faf7f8;border-radius:8px;padding:15px;margin:20px 0;">
-                <tr>
-                  <td>
-                    <strong>📅 Date:</strong> June 20, 2026<br>
-                    <strong>🕚 Time:</strong> 11:30 AM IST<br>
-                    <strong>🎤 Host:</strong> Khushboo Khushnay
-                  </td>
-                </tr>
-              </table>
+<h1 style="margin:0;font-size:30px;">
+🎉 You're Registered!
+</h1>
 
-              <!-- CTA Button -->
-              <div style="text-align:center;margin:30px 0;">
-                <a href="https://us06web.zoom.us/j/83698518623?pwd=OBS4YrbbNNW2zyLsCvabLFdRCaclvb.1"
-                   style="background:#8B2C4A;color:#ffffff;text-decoration:none;padding:14px 30px;border-radius:6px;font-weight:bold;display:inline-block;">
-                  Join Webinar
-                </a>
-              </div>
+<p style="margin-top:12px;font-size:18px;">
+${webinarTitle}
+</p>
 
-              <h3>Meeting Details</h3>
+</td>
+</tr>
 
-              <p>
-                <strong>Meeting ID:</strong> 836 9851 8623<br>
-                <strong>Passcode:</strong> 475249
-              </p>
+<tr>
+<td style="padding:40px;">
 
-              <p>
-                <strong>Meeting Chat:</strong><br>
-                <a href="https://us06web.zoom.us/launch/jc/83698518623">
-                  Open Meeting Chat
-                </a>
-              </p>
+<p style="font-size:17px;">
+Dear <strong>${userName}</strong>,
+</p>
 
-              <p>
-                Please join the webinar 5–10 minutes before the scheduled time.
-              </p>
+<p>
+Thank you for registering for our FREE live webinar.
+We're looking forward to welcoming you to this powerful
+90-minute session.
+</p>
 
-              <p>
-                We look forward to helping you identify, understand, and break unhealthy relationship patterns.
-              </p>
+<div style="
+background:#FDF6F8;
+border-left:4px solid #7B2E4D;
+padding:20px;
+border-radius:8px;
+margin:30px 0;
+">
 
-            </td>
-          </tr>
+<h3 style="margin-top:0;color:#7B2E4D;">
+📅 Webinar Details
+</h3>
 
-          <!-- Footer -->
-          <tr>
-            <td align="center" style="background:#f8f8f8;padding:20px;color:#666666;font-size:13px;">
-              <strong>Khushboo Khushnay</strong><br>
-              Relationship Expert & Healer
-              <br><br>
-              This email was sent because you registered for the webinar.
-            </td>
-          </tr>
+<p style="margin:8px 0;">
+<strong>Date:</strong> ${date}
+</p>
 
-        </table>
-      </td>
-    </tr>
-  </table>
+<p style="margin:8px 0;">
+<strong>Time:</strong> ${time}
+</p>
+
+<p style="margin:8px 0;">
+<strong>Mode:</strong> ${venue}
+</p>
+
+</div>
+
+<div style="text-align:center;margin:35px 0;">
+
+<a
+href="${meetingLink}"
+style="
+background:#7B2E4D;
+color:#fff;
+padding:16px 36px;
+text-decoration:none;
+border-radius:8px;
+font-weight:bold;
+font-size:16px;
+display:inline-block;
+">
+Join Webinar
+</a>
+
+</div>
+
+<h3 style="color:#7B2E4D;">
+What You'll Experience
+</h3>
+
+<ul style="padding-left:20px;line-height:1.8;">
+<li>✔ Understand why relationships feel stuck.</li>
+<li>✔ Learn practical emotional healing tools.</li>
+<li>✔ Discover how change begins with you.</li>
+<li>✔ Participate in a live Q&A with Khushboo.</li>
+</ul>
+
+<div style="
+background:#FFF8E6;
+padding:18px;
+border-radius:8px;
+margin-top:30px;
+">
+
+<strong>Reminder</strong>
+
+<p style="margin-bottom:0;">
+Please join the webinar 10 minutes before the scheduled
+start time to ensure a smooth experience.
+</p>
+
+</div>
+
+<p style="margin-top:35px;">
+We can't wait to see you there.
+</p>
+
+<p>
+Warm regards,<br>
+<strong>Khushboo Khushnay</strong><br>
+Relationship Coach & Healer
+</p>
+
+</td>
+</tr>
+
+<tr>
+
+<td
+align="center"
+style="
+background:#F5F5F5;
+padding:25px;
+font-size:13px;
+color:#777;
+">
+
+You're receiving this email because you registered for
+<strong>${webinarTitle}</strong>.
+
+<br><br>
+
+© 2026 Khushboo Khushnay. All Rights Reserved.
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+
 </body>
 </html>
-  `,
+`,
 });
